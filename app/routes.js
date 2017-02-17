@@ -46,4 +46,13 @@ module.exports = function(app, passport){
       res.redirect('/');
     }
   });
+
+  //Add Event
+  app.get('/addEvent', function(req,res){
+    if(req.user){
+      res.render('../views/pages/addEvent.ejs', {user: req.user});
+    }else{
+      res.redirect('/');
+    }
+  });
 };

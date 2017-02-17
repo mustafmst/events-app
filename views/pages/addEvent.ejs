@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <% include ../partials/head.ejs %>
+</head>
+<body>
+  <div class="navbar">
+    <% include ../partials/top-bar.ejs %>
+  </div>
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1">
+      <form action="/addevent" method="post" class="form-horizontal">
+        <div class="form-group"><!--Event name-->
+          <label for="eventName" class="col-md-3 control-label">Event Name</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" id="eventName" name="eventName" placeholder="Name of the event" />
+          </div>
+        </div>
+
+        <div class="form-group"><!---->
+          <label for="startDate" class="col-md-3 control-label">Start Date</label>
+          <div class="col-md-9">
+            <input type="datetime" class="form-control" id="startDate" name="starteDate" />
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</body>
+</html>
