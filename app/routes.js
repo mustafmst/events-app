@@ -1,3 +1,5 @@
+var eventService = require('./services/eventService');
+
 module.exports = function(app, passport){
 
   //Index page
@@ -54,5 +56,11 @@ module.exports = function(app, passport){
     }else{
       res.redirect('/');
     }
+  });
+
+  app.post('/addEvent', function(req,res){
+    console.log(req);
+    eventService.createEvent(req.user, req.body);
+    res.redirect('/');
   });
 };
