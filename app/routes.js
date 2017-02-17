@@ -16,5 +16,9 @@ module.exports = function(app, passport){
     failureRedirect: '/signup',
     failureFlash: true,
   }));
+
   //Login
+  app.get('/login', function(req, res){
+    res.render('../views/pages/login.ejs', {message: req.flash('loginMessage')});
+  })
 };
