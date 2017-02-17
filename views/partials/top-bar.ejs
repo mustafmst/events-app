@@ -13,12 +13,22 @@
     </div>
 
     <div class="col-md-4">
-      <div class="pull-right">
-        <a href="/login" type="button" class="btn btn-default navbar-btn">
-          Login</a>
-        <a href="/signup" type="button" class="btn btn-primary navbar-btn">
-          Signup</a>
-      </div>
+      <% if(user) { %>
+        <div class="pull-right">
+          <a class="navbar-text" href="/">
+            <span class="glyphicon glyphicon-user"></span> <%= user.login %>
+          </a>
+          <a href="/" type="button" class="btn btn-danger navbar-btn">
+            Logout</a>
+        </div>
+      <% } else { %>
+        <div class="pull-right">
+          <a href="/login" type="button" class="btn btn-default navbar-btn">
+            Login</a>
+          <a href="/signup" type="button" class="btn btn-primary navbar-btn">
+            Signup</a>
+        </div>
+      <% } %>
     </div>
   </div>
 </nav>
