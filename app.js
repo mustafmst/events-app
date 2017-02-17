@@ -19,6 +19,7 @@ require('./config/passport')(passport);
 //express setup
 
 app.use('/css', express.static(__dirname+'/node_modules/bootstrap/dist/css'));
+app.use('/fonts', express.static(__dirname+'/node_modules/bootstrap/dist/fonts'))
 app.use('/js', express.static(__dirname+'/node_modules/bootstrap/dist/js'));
 
 app.use(morgan(environment));
@@ -32,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
+require('./app/routes')(app, passport);
 //run application
 app.listen(port);
 console.log('App is using db :'+dbConfiguration.url);
