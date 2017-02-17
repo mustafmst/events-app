@@ -35,7 +35,7 @@ module.exports = function(passport){
 
           newUser.save(function(err){
             if(err) throw err;
-            return done(null,newUser,req.flash('homeMessage', 'User created.'));
+            return done(null,newUser);
           });
         }
       });

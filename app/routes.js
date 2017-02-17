@@ -31,4 +31,10 @@ module.exports = function(app, passport){
     failureRedirect: '/login',
     failureFlash: true
   }));
+
+  //Logout
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
 };
