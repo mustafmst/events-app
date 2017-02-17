@@ -22,7 +22,7 @@ app.use('/css', express.static(__dirname+'/node_modules/bootstrap/dist/css'));
 app.use('/fonts', express.static(__dirname+'/node_modules/bootstrap/dist/fonts'))
 app.use('/js', express.static(__dirname+'/node_modules/bootstrap/dist/js'));
 
-app.use(morgan(environment));
+app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
 
