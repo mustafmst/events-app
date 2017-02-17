@@ -1,0 +1,25 @@
+{
+  "name": "events-app",
+  "version": "1.0.0",
+  "description": "Application for creating and signing up for events",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paweł Mstowski",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.1",
+    "bootstrap": "^3.3.7",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "mongoose": "^4.8.3",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
+  }
+}
