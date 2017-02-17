@@ -2,7 +2,8 @@ var EventModel = require('../models/EventModel');
 
 var EventService = {
   createEvent: createEvent,
-  getEventsForToday: getEventsForToday
+  getEventsForToday: getEventsForToday,
+  deleteEvent: deleteEvent
 };
 
 function createEvent(user, data){
@@ -24,6 +25,10 @@ function getEventsForToday(res){
       res.json(events);
     });
   });
+}
+
+function deleteEvent(eventId, user, res){
+  
 }
 
 module.exports = EventService;
