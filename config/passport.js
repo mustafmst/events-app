@@ -35,9 +35,28 @@ module.exports = function(passport){
 
           newUser.save(function(err){
             if(err) throw err;
-            return done(null,newUser,req.flash('homeMessage', 'Utworzono nowego urzytkownika.'));
+            return done(null,newUser,req.flash('homeMessage', 'User created.'));
           });
         }
+      });
+    });
+  }));
+
+  passport.use('login', new LocalStrategy({
+    usernameField: 'login',
+    passwordField: 'password',
+    passReqToCallback: true
+  }, function(req, login, password, done){
+    process.nextTick(function(){
+      UserModel.findOne({'login': login}, function(err, user){
+        if(err) return done(err);
+        if(!user) return done(null,false,req.flash('loginMessage', 'There is no such user'));
+
+        if(user.isPasswordValid(password)){
+          return done(null,user);
+        }
+
+        return done(null,false,req.flash('loginMessage','Wrong password!'));
       });
     });
   }));

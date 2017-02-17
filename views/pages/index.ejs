@@ -9,9 +9,13 @@
   </div>
   <div class="container">
     <% if (message.length > 0) { %>
-      <div class="alert alert-success">
+      <div class="alert alert-success alert-dismissable">
         <%= message %>
       </div>
+    <% } %>
+
+    <% if (user) { %>
+      <h3><%= user.login %></h3>
     <% } %>
   </div>
 
