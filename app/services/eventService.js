@@ -17,12 +17,11 @@ function createEvent(user, data){
   newEvent.save();
 };
 
-function getEventsForToday(){
+function getEventsForToday(res){
   process.nextTick(function(){
     EventModel.find({'startDate':{'$gt': Date.now()}}, function(err, events){
       if(err) throw err;
-      console.log('service\n'+events);
-      return events;
+      res.json(events);
     });
   });
 }

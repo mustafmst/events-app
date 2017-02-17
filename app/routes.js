@@ -63,4 +63,9 @@ module.exports = function(app, passport){
     eventService.createEvent(req.user, req.body);
     res.redirect('/');
   });
+
+  //Getting Events
+  app.get('/todayEvents', function(req,res){
+    eventService.getEventsForToday(res);
+  });
 };

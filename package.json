@@ -9,6 +9,7 @@
   "author": "Paweł Mstowski",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.6.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.16.1",
     "bootstrap": "^3.3.7",
