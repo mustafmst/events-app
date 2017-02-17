@@ -59,7 +59,6 @@ module.exports = function(app, passport){
   });
 
   app.post('/addEvent', function(req,res){
-    console.log(req);
     eventService.createEvent(req.user, req.body);
     res.redirect('/');
   });
