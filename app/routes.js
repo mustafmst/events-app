@@ -37,4 +37,13 @@ module.exports = function(app, passport){
     req.logout();
     res.redirect('/');
   });
+
+  //Profile
+  app.get('/profile', function(req,res){
+    if(req.user){
+      res.render('../views/pages/profile.ejs', {user: req.user});
+    }else{
+      res.redirect('/');
+    }
+  });
 };
