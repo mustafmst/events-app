@@ -1,5 +1,5 @@
 module.exports = function(environment){
   return {
-    url : 'mongodb://localhost/events_'+environment
+    url : 'mongodb://mustaf:mustaf@olympia.modulusmongo.net:27017/arogyg2A'
   };
 };

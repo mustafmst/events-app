@@ -1,6 +1,6 @@
 //evironmental variables
 var environment = 'dev';
-var port = 8000;
+var port = process.env.PORT || 5000;
 
 //dependencies
 var express = require('express');
