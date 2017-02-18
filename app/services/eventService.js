@@ -14,6 +14,7 @@ function createEvent(user, data){
   newEvent.startDate = data.startDate;
   newEvent.endDate = data.endDate;
   newEvent.description = data.description;
+  newEvent.maxGuests = data.maxGuests;
 
   newEvent.save();
 };
