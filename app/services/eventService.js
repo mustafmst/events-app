@@ -20,7 +20,7 @@ function createEvent(user, data){
 
 function getEventsForToday(res){
   process.nextTick(function(){
-    EventModel.find({'startDate':{'$gt': Date.now()}}, function(err, events){
+    EventModel.find({'startDate':{'$gt': Date.now()}}).sort({stardDate:'asc'}).exec(function(err, events){
       if(err) throw err;
       res.json(events);
     });
