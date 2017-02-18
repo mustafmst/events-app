@@ -30,7 +30,11 @@
         </div>
 
         <div class="panel-footer">
-          <a ng-click="deleteEvent(event._id)" ng-if="isUserEventOwner(event)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trashglyphicon glyphicon-trash"></span> Delete</a>
+          <div class="btn-group" role="group" aria-label="...">
+            <a ng-click="" ng-if="canUserSignIn(event)" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span> Signup for event</a>
+            <a ng-click="" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span> Details</a>
+            <a ng-click="deleteEvent(event._id)" ng-if="isUserEventOwner(event)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trashglyphicon glyphicon-trash"></span> Delete</a>
+          </div>
         </div>
       </div>
 

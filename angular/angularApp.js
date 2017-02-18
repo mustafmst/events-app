@@ -27,5 +27,10 @@ eventsApp.controller('eventsListController', ['$scope','$http', function($scope,
     return $scope.userId == event.owner_id;
   };
 
+  $scope.canUserSignIn = function(event){
+    if(!$scope.userId) return false;
+    return !$scope.isUserEventOwner(event);
+  }
+
 }]
 );
