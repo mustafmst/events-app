@@ -6,7 +6,8 @@ var eventSchema = mongoose.Schema({
   startDate: Date,
   endDate: Date,
   description: String,
-  participants: [mongoose.Schema.Types.ObjectId]
+  participants: [mongoose.Schema.Types.ObjectId],
+  maxGuests: Number
 });
 
 module.exports = mongoose.model('Event', eventSchema);
