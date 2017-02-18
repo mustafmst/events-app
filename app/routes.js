@@ -68,7 +68,11 @@ module.exports = function(app, passport){
     eventService.getEventsForToday(res);
   });
 
-  //Delete Event
+  //Event
+  app.get('/event/:id', function(req,res){
+    res.render('../views/pages/event.ejs',{user:req.user});
+  });
+
   app.delete('/event/:id', function(req,res){
     eventService.deleteEvent(req.params.id, req.user, res);
   });

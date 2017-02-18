@@ -8,7 +8,7 @@
     <% include ../partials/top-bar.ejs %>
   </div>
 
-  <div class="container" ng-controller="eventsListController" <% if(user){ %>ng-init="userId = '<%=user._id%>'"<% } %>>
+  <div class="container" ng-controller="eventsListHomeController" <% if(user){ %>ng-init="userId = '<%=user._id%>'"<% } %>>
     <div class="panet-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-primary" ng-repeat="event in events">
 
@@ -32,7 +32,7 @@
         <div class="panel-footer">
           <div class="btn-group" role="group" aria-label="...">
             <a ng-click="" ng-if="canUserSignIn(event)" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span> Signup for event</a>
-            <a ng-click="" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span> Details</a>
+            <a href="/event/{{event._id}}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span> Details</a>
             <a ng-click="deleteEvent(event._id)" ng-if="isUserEventOwner(event)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trashglyphicon glyphicon-trash"></span> Delete</a>
           </div>
         </div>

@@ -1,6 +1,6 @@
 var eventsApp = angular.module('eventsApp', []);
 
-eventsApp.controller('eventsListController', ['$scope','$http', function($scope, $http){
+eventsApp.controller('eventsListHomeController', ['$scope','$http', function($scope, $http){
 
   $scope.updateEvents = function(){
     $http({
