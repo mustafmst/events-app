@@ -10,40 +10,7 @@
   </div>
 
   <div class="container" ng-controller="eventsListHomeController" <% if(user){ %>ng-init="userId = '<%=user._id%>'"<% } %>>
-    <div class="panet-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-primary" ng-repeat="event in events">
-
-      <div class="panel-heading" role="tab" id="heading{{event._id}}">
-        <div class="col-md-11">
-          <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{event._id}}" aria-expanded="false" aria-controls="collapse{{event._id}}" >{{event.name}}</a>
-          </h4>
-        </div>
-        <span class="glyphicon glyphicon-user"></span> {{event.participants.length}} / {{event.maxGuests}}
-      </div>
-
-      <div id="collapse{{event._id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{event._id}}">
-        <div class="panel-body">
-          <p>
-            {{event.description}}
-          </p>
-          <p>
-            <strong>Stard Date:</strong> {{event.startDate | date: 'MMMM dd yyyy HH:mm' }} <br />
-            <strong>End Date:</strong> {{event.endDate | date: 'MMMM dd yyyy HH:mm' }} <br />
-          </p>
-        </div>
-
-        <div class="panel-footer">
-          <div class="btn-group" role="group" aria-label="...">
-            <a ng-click="" ng-if="canUserSignIn(event)" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span> Signup for event</a>
-            <a href="/event/{{event._id}}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span> Details</a>
-            <a ng-click="deleteEvent(event._id)" ng-if="isUserEventOwner(event)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trashglyphicon glyphicon-trash"></span> Delete</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    </div>
+    <% include ../partials/eventsList.ejs %>
   </div>
 
 </body>

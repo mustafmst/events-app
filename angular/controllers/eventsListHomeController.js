@@ -1,4 +1,4 @@
-angular.module('eventsApp').controller('eventsListHomeController', function($scope, $http){
+angular.module('eventsApp').controller('eventsListHomeController', function($scope, $http, eventService){
 
   $scope.updateEvents = function(){
     $http({
@@ -11,23 +11,32 @@ angular.module('eventsApp').controller('eventsListHomeController', function($sco
 
   $scope.updateEvents();
 
+
+//need to copy that to other controllers
   $scope.deleteEvent = function(id){
-    console.log('Inside angular controller: user deletes event: '+id);
-    $http({
-      method: 'DELETE',
-      url: '/event/'+id
-    }).then(function(res){
-        $scope.updateEvents();
-    });
+    eventService.deleteEvent(id);
+    $scope.updateEvents();
   };
 
   $scope.isUserEventOwner = function(event){
-    return $scope.userId == event.owner_id;
+    if($scope.userId){
+      return eventService.isUserEventOwner(event, $scope.userId);
+    }
+    return false;
   };
 
   $scope.canUserSignIn = function(event){
-    if(!$scope.userId) return false;
-    return !$scope.isUserEventOwner(event);
-  }
+    if($scope.userId){
+      return eventService.canUserSignIn(event, $scope.userId);
+    }
+    return false;
+  };
 
+  $scope.signupForEvent = function(event){
+    if($scope.userId){
+      eventService.signupForEvent(event, $scope.userId);
+      $scope.updateEvents();
+    }
+  };
+//end
 });
