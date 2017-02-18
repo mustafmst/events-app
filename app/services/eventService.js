@@ -28,7 +28,11 @@ function getEventsForToday(res){
 }
 
 function deleteEvent(eventId, user, res){
-  
+  EventModel.findById(eventId, function(err, event){
+    if(err) throw err;
+    if(user._id != event.owner_id) res.json({message : 'You are not the owner of this event'});
+    event.remove();
+  });
 }
 
 module.exports = EventService;

@@ -69,10 +69,7 @@ module.exports = function(app, passport){
   });
 
   //Delete Event
-  app.get('/event/delete/:id', function(req,res){
-    if(req.user){
-      console.log('User: '+req.user.login+' trys to delete event: '+req.params.id+'');
-    }
-    res.redirect('/');
+  app.delete('/event/:id', function(req,res){
+    eventService.deleteEvent(req.params.id, req.user, res);
   });
 };

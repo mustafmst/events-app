@@ -3,15 +3,12 @@
 <head>
   <% include ../partials/head.ejs %>
 </head>
-<body ng-app="eventsApp" <% if(user){ %>
-        ng-init="userId = <%=user._id%>"
-    <% } %>
-  >
+<body ng-app="eventsApp" >
   <div class="navbar">
     <% include ../partials/top-bar.ejs %>
   </div>
 
-  <div class="container" ng-controller="eventsListController">
+  <div class="container" ng-controller="eventsListController" <% if(user){ %>ng-init="userId = '<%=user._id%>'"<% } %>>
     <div class="panel panel-primary" ng-repeat="event in events">
 
       <div class="panel-heading">
@@ -27,7 +24,7 @@
       </div>
 
       <div class="panel-footer">
-        <a class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trashglyphicon glyphicon-trash"></span> Delete</a>
+        <a ng-click="deleteEvent(event._id)" ng-if="isUserEventOwner(event)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trashglyphicon glyphicon-trash"></span> Delete</a>
       </div>
 
     </div>
