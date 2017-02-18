@@ -21,6 +21,10 @@
         <p>
           {{event.description}}
         </p>
+        <p>
+          <strong>Stard Date:</strong> {{event.startDate | date: 'MMMM dd yyyy HH:mm' }} <br />
+          <strong>End Date:</strong> {{event.endDate | date: 'MMMM dd yyyy HH:mm' }} <br />
+        </p>
       </div>
 
       <div class="panel-footer">
