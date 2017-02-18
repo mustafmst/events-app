@@ -19,11 +19,7 @@ angular.module('eventsApp').service('eventService', function($http){
   this.signupForEvent = function(event, userId){
     $http({
       method: 'POST',
-      url: '/event/addUser',
-      params:{
-        eventId: event._id,
-        userId: userId
-      }
+      url: '/event/addUser/'+userId+'/'+event._id
     });
   };
 });

@@ -76,4 +76,11 @@ module.exports = function(app, passport){
   app.delete('/event/:id', function(req,res){
     eventService.deleteEvent(req.params.id, req.user, res);
   });
+
+  app.post('/event/addUser/:userId/:eventId', function(req,res){
+    console.log(req.params);
+    if(req.params.userId == req.user._id){
+      eventService.addUserToEvent(req.params, res);
+    }
+  });
 };

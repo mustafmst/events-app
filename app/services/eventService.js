@@ -3,7 +3,8 @@ var EventModel = require('../models/EventModel');
 var EventService = {
   createEvent: createEvent,
   getEventsForToday: getEventsForToday,
-  deleteEvent: deleteEvent
+  deleteEvent: deleteEvent,
+  addUserToEvent: addUserToEvent
 };
 
 function createEvent(user, data){
@@ -33,6 +34,15 @@ function deleteEvent(eventId, user, res){
     if(err) throw err;
     if(user._id != event.owner_id) res.json({message : 'You are not the owner of this event'});
     event.remove();
+  });
+}
+
+function addUserToEvent(params, res){
+  EventModel.findById(params.eventId, function(err, event){
+    if(err) throw err;
+    if(params.userId == event.owner_id) res.json({message : 'You are the owner of this event. You can\'t be participant.'});
+    event.participants.push(params.userId);
+    event.save();
   });
 }
 
