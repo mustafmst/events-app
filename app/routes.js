@@ -78,9 +78,14 @@ module.exports = function(app, passport){
   });
 
   app.post('/event/addUser/:userId/:eventId', function(req,res){
-    console.log(req.params);
     if(req.params.userId == req.user._id){
       eventService.addUserToEvent(req.params, res);
+    }
+  });
+
+  app.post('/event/removeUser/:userId/:eventId', function(req,res){
+    if(req.params.userId = req.user._id){
+      eventService.removeUserFromEvent(req.params, res);
     }
   });
 };

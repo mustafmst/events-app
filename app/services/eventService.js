@@ -4,7 +4,8 @@ var EventService = {
   createEvent: createEvent,
   getEventsForToday: getEventsForToday,
   deleteEvent: deleteEvent,
-  addUserToEvent: addUserToEvent
+  addUserToEvent: addUserToEvent,
+  removeUserFromEvent: removeUserFromEvent
 };
 
 function createEvent(user, data){
@@ -43,6 +44,17 @@ function addUserToEvent(params, res){
     if(params.userId == event.owner_id) res.json({message : 'You are the owner of this event. You can\'t be participant.'});
     event.participants.push(params.userId);
     event.save();
+  });
+}
+
+function removeUserFromEvent(params, res){
+  EventModel.findById(params.eventId, function(err, event){
+    if(err) throw err;
+    var indexOfParticipant = event.participants.indexOf(params.userId);
+    if(indexOfParticipant !== -1){
+      event.participants.splice(indexOfParticipant,1);
+      event.save();
+    }
   });
 }
 
