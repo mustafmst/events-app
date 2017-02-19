@@ -24,6 +24,7 @@
     <div class="panel-footer">
       <div class="btn-group" role="group" aria-label="...">
         <a ng-click="signupForEvent(event)" ng-if="canUserSignIn(event)" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span> Signup for event</a>
+        <a ng-click="" ng-if="isUserSignIn(event)" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-remove"></span> Signoff from event</a>
         <a href="/event/{{event._id}}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span> Details</a>
         <a ng-click="deleteEvent(event._id)" ng-if="isUserEventOwner(event)" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trashglyphicon glyphicon-trash"></span> Delete</a>
       </div>

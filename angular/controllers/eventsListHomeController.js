@@ -38,5 +38,11 @@ angular.module('eventsApp').controller('eventsListHomeController', function($sco
       $scope.updateEvents();
     }
   };
+
+  $scope.isUserSignIn = function(event){
+    if($scope.userId){
+      return eventService.isUserSignIn(event, $scope.userId);
+    }
+  }
 //end
 });

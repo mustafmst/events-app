@@ -13,7 +13,12 @@ angular.module('eventsApp').service('eventService', function($http){
 
   this.canUserSignIn = function(event, userId){
     if(!userId) return false;
+    if(this.isUserSignIn(event, userId)) return false;
     return !this.isUserEventOwner(event, userId);
+  };
+
+  this.isUserSignIn = function(event, userId){
+    return event.participants.includes(userId);
   };
 
   this.signupForEvent = function(event, userId){
