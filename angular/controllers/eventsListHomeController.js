@@ -18,6 +18,18 @@ angular.module('eventsApp').controller('eventsListHomeController', function($sco
     $scope.updateEvents();
   };
 
+  $scope.signupForEvent = function(event){
+    if($scope.userId){
+      eventService.signupForEvent(event, $scope.userId, $scope.updateEvents);
+    }
+  };
+
+  $scope.signoffFromEvent = function(event){
+    if($scope.userId){
+      eventService.signoffFromEvent(event, $scope.userId, $scope.updateEvents);
+    }
+  };
+
   $scope.isUserEventOwner = function(event){
     if($scope.userId){
       return eventService.isUserEventOwner(event, $scope.userId);
@@ -30,13 +42,6 @@ angular.module('eventsApp').controller('eventsListHomeController', function($sco
       return eventService.canUserSignIn(event, $scope.userId);
     }
     return false;
-  };
-
-  $scope.signupForEvent = function(event){
-    if($scope.userId){
-      eventService.signupForEvent(event, $scope.userId);
-      $scope.updateEvents();
-    }
   };
 
   $scope.isUserSignIn = function(event){

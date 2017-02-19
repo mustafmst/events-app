@@ -21,10 +21,17 @@ angular.module('eventsApp').service('eventService', function($http){
     return event.participants.includes(userId);
   };
 
-  this.signupForEvent = function(event, userId){
+  this.signupForEvent = function(event, userId, updateFunction){
     $http({
       method: 'POST',
       url: '/event/addUser/'+userId+'/'+event._id
-    });
+    }).then(updateFunction());
+  };
+
+  this.signoffFromEvent = function(event, userId, updateFunction){
+    $http({
+      method: 'POST',
+      url: '/event/removeUser/'+userId+'/'+event._id
+    }).then(updateFunction());
   };
 });
