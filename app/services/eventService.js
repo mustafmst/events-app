@@ -36,15 +36,18 @@ function deleteEvent(eventId, user, res){
     if(user._id != event.owner_id) res.json({message : 'You are not the owner of this event'});
     event.remove();
   });
+  res.end();
 }
 
 function addUserToEvent(params, res){
   EventModel.findById(params.eventId, function(err, event){
     if(err) throw err;
     if(params.userId == event.owner_id) res.json({message : 'You are the owner of this event. You can\'t be participant.'});
+    if(event.participants.length == event.maxGuests) res.json({message : 'event if full'});
     event.participants.push(params.userId);
     event.save();
   });
+  res.end();
 }
 
 function removeUserFromEvent(params, res){
@@ -56,6 +59,7 @@ function removeUserFromEvent(params, res){
       event.save();
     }
   });
+  res.end();
 }
 
 module.exports = EventService;
